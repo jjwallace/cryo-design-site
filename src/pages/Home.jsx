@@ -48,12 +48,12 @@ export default function Home() {
       <TileGallery projects={galleryPart2} />
 
       {/* CTA Section */}
-      <section className="py-24 px-6 text-center bg-gray-50">
+      <section className="relative z-20 py-24 px-6 text-center bg-gray-100 dark:bg-gray-900">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-light mb-6">
+          <h2 className="text-3xl md:text-4xl font-light mb-6 text-gray-900 dark:text-white">
             Ready to create something?
           </h2>
-          <p className="text-gray-500 mb-10">
+          <p className="text-gray-500 dark:text-gray-400 mb-10">
             Let's discuss your project and see how we can bring your vision to life.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
