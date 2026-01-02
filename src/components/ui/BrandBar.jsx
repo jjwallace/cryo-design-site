@@ -44,12 +44,12 @@ export default function BrandBar() {
   return (
     <div
       ref={containerRef}
-      className="w-full overflow-hidden bg-gray-50 py-12"
+      className="relative z-10 w-full overflow-hidden bg-gray-100 dark:bg-gray-900 py-12"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <div className="max-w-[1800px] mx-auto px-6 lg:px-12 mb-8">
-        <p className="text-xs uppercase tracking-widest text-gray-400">
+        <p className="text-xs uppercase tracking-widest text-gray-400 dark:text-gray-500">
           Trusted by
         </p>
       </div>
@@ -62,7 +62,7 @@ export default function BrandBar() {
           {duplicatedBrands.map((brand, index) => (
             <div
               key={`${brand.id}-${index}`}
-              className="flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
+              className="flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100 dark:invert"
             >
               <img
                 src={brand.logo}

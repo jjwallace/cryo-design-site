@@ -95,7 +95,7 @@ export default function TileGallery({ projects, showOverlay = true }) {
   };
 
   return (
-    <section ref={galleryRef} className="px-4 md:px-6 lg:px-12 py-12">
+    <section ref={galleryRef} className="relative z-10 px-4 md:px-6 lg:px-12 py-12">
       <div className="max-w-[1800px] mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 auto-rows-[200px] md:auto-rows-[250px] lg:auto-rows-[300px]">
           {displayProjects.map((project, index) => (
@@ -103,7 +103,7 @@ export default function TileGallery({ projects, showOverlay = true }) {
               key={`${project.category}-${project.id}-${index}`}
               ref={(el) => (tilesRef.current[index] = el)}
               to={`/portfolio/${project.category}`}
-              className={`group relative overflow-hidden bg-gray-100 ${getGridClasses(
+              className={`group relative overflow-hidden ${getGridClasses(
                 project.size,
                 index
               )}`}

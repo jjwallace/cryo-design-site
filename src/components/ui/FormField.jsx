@@ -10,13 +10,13 @@ export default function FormField({
   onChange,
   error,
 }) {
-  const baseInputStyles = `w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:border-black focus:outline-none transition-colors duration-200 text-sm`;
+  const baseInputStyles = `w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-black dark:focus:border-white focus:outline-none transition-colors duration-200 text-sm text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500`;
 
   if (type === 'textarea') {
     return (
       <div className="space-y-2">
         {label && (
-          <label htmlFor={name} className="block text-sm font-medium text-gray-700">
+          <label htmlFor={name} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
             {label}
             {required && <span className="text-red-500 ml-1">*</span>}
           </label>
@@ -40,7 +40,7 @@ export default function FormField({
     return (
       <div className="space-y-2">
         {label && (
-          <label htmlFor={name} className="block text-sm font-medium text-gray-700">
+          <label htmlFor={name} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
             {label}
             {required && <span className="text-red-500 ml-1">*</span>}
           </label>
@@ -68,7 +68,7 @@ export default function FormField({
   return (
     <div className="space-y-2">
       {label && (
-        <label htmlFor={name} className="block text-sm font-medium text-gray-700">
+        <label htmlFor={name} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
           {label}
           {required && <span className="text-red-500 ml-1">*</span>}
         </label>

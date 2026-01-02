@@ -3,7 +3,7 @@ import { content } from '../../data/brands';
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white py-16">
+    <footer className="relative z-20 bg-gray-900 dark:bg-black text-white py-16">
       <div className="max-w-[1800px] mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand */}
@@ -42,8 +42,8 @@ export default function Footer() {
               Contact
             </h4>
             <div className="flex flex-col gap-2 text-sm">
-              <a href="mailto:hello@cryodesign.com" className="text-gray-300 hover:text-white transition-colors">
-                hello@cryodesign.com
+              <a href="mailto:cy@cryodesign.com" className="text-gray-300 hover:text-white transition-colors">
+                cy@cryodesign.com
               </a>
               <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">
                 Get a Quote

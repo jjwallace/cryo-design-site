@@ -47,8 +47,10 @@ export default function Navbar() {
     <>
       <nav
         ref={navRef}
-        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-          scrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm' : 'bg-transparent'
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? 'bg-black/80 backdrop-blur-md'
+            : 'bg-transparent'
         }`}
       >
         <div className="max-w-[1800px] mx-auto px-6 lg:px-12">
@@ -58,7 +60,7 @@ export default function Navbar() {
               <img
                 src={logo}
                 alt="Cryo Design"
-                className="h-12 w-12 object-contain"
+                className="h-12 w-12 object-contain invert"
               />
             </Link>
 
@@ -68,9 +70,10 @@ export default function Navbar() {
                 <NavLink
                   key={link.to}
                   to={link.to}
+                  style={{ color: '#ffffff' }}
                   className={({ isActive }) =>
-                    `text-sm font-medium tracking-wide uppercase transition-colors duration-200 hover:text-gray-500 ${
-                      isActive ? 'text-black' : 'text-gray-700'
+                    `text-sm font-medium tracking-wide uppercase transition-colors duration-200 hover:opacity-70 ${
+                      isActive ? 'underline underline-offset-4' : ''
                     }`
                   }
                 >
@@ -80,27 +83,29 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
-              aria-label="Toggle menu"
-            >
-              <span
-                className={`w-6 h-0.5 bg-black transition-all duration-300 ${
-                  menuOpen ? 'rotate-45 translate-y-2' : ''
-                }`}
-              />
-              <span
-                className={`w-6 h-0.5 bg-black transition-all duration-300 ${
-                  menuOpen ? 'opacity-0' : ''
-                }`}
-              />
-              <span
-                className={`w-6 h-0.5 bg-black transition-all duration-300 ${
-                  menuOpen ? '-rotate-45 -translate-y-2' : ''
-                }`}
-              />
-            </button>
+            <div className="md:hidden flex items-center">
+              <button
+                onClick={() => setMenuOpen(!menuOpen)}
+                className="flex flex-col justify-center items-center w-10 h-10 gap-1.5"
+                aria-label="Toggle menu"
+              >
+                <span
+                  className={`w-6 h-0.5 bg-white transition-all duration-300 ${
+                    menuOpen ? 'rotate-45 translate-y-2' : ''
+                  }`}
+                />
+                <span
+                  className={`w-6 h-0.5 bg-white transition-all duration-300 ${
+                    menuOpen ? 'opacity-0' : ''
+                  }`}
+                />
+                <span
+                  className={`w-6 h-0.5 bg-white transition-all duration-300 ${
+                    menuOpen ? '-rotate-45 -translate-y-2' : ''
+                  }`}
+                />
+              </button>
+            </div>
           </div>
         </div>
       </nav>

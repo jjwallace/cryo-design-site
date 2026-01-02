@@ -48,11 +48,11 @@ export default function About() {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white dark:bg-gray-950">
       {/* Hero */}
       <header ref={heroRef} className="pt-20 pb-16 px-6 lg:px-12">
         <div className="max-w-[1800px] mx-auto">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-black">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-black dark:text-white">
             About
           </h1>
         </div>
@@ -64,7 +64,7 @@ export default function About() {
           {/* Left Column - Image Placeholder */}
           <div className="lg:col-span-5">
             <div className="sticky top-32">
-              <div className="aspect-[4/5] bg-gray-100 overflow-hidden">
+              <div className="aspect-[4/5] bg-gray-100 dark:bg-gray-800 overflow-hidden">
                 <img
                   src="https://placehold.co/600x750"
                   alt="Cryo Design Studio"
@@ -78,36 +78,36 @@ export default function About() {
           <div className="lg:col-span-7 space-y-20 pb-24">
             {/* Bio Section */}
             <section ref={bioRef}>
-              <h2 className="text-xs uppercase tracking-widest text-gray-400 mb-6">
+              <h2 className="text-xs uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-6">
                 Who We Are
               </h2>
-              <div className="text-lg md:text-xl leading-relaxed text-gray-700 whitespace-pre-line">
+              <div className="text-lg md:text-xl leading-relaxed text-gray-700 dark:text-gray-300 whitespace-pre-line">
                 {content.about.bio}
               </div>
             </section>
 
             {/* Philosophy Section */}
             <section ref={philosophyRef}>
-              <h2 className="text-xs uppercase tracking-widest text-gray-400 mb-6">
+              <h2 className="text-xs uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-6">
                 Our Philosophy
               </h2>
-              <div className="text-lg md:text-xl leading-relaxed text-gray-700 whitespace-pre-line">
+              <div className="text-lg md:text-xl leading-relaxed text-gray-700 dark:text-gray-300 whitespace-pre-line">
                 {content.about.philosophy}
               </div>
             </section>
 
             {/* Services Section */}
             <section ref={servicesRef}>
-              <h2 className="text-xs uppercase tracking-widest text-gray-400 mb-6">
+              <h2 className="text-xs uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-6">
                 What We Do
               </h2>
               <ul className="space-y-3">
                 {content.about.services.map((service, index) => (
                   <li
                     key={index}
-                    className="text-lg text-gray-700 flex items-center gap-4"
+                    className="text-lg text-gray-700 dark:text-gray-300 flex items-center gap-4"
                   >
-                    <span className="w-2 h-2 bg-black rounded-full flex-shrink-0" />
+                    <span className="w-2 h-2 bg-black dark:bg-white rounded-full flex-shrink-0" />
                     {service}
                   </li>
                 ))}
@@ -116,14 +116,14 @@ export default function About() {
 
             {/* Clients Section */}
             <section ref={clientsRef}>
-              <h2 className="text-xs uppercase tracking-widest text-gray-400 mb-6">
+              <h2 className="text-xs uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-6">
                 Notable Clients
               </h2>
               <div className="grid grid-cols-2 gap-4">
                 {content.about.clients.map((client, index) => (
                   <div
                     key={index}
-                    className="text-gray-600 py-3 border-b border-gray-100"
+                    className="text-gray-600 dark:text-gray-400 py-3 border-b border-gray-100 dark:border-gray-800"
                   >
                     {client}
                   </div>
@@ -133,7 +133,7 @@ export default function About() {
 
             {/* CTA */}
             <section className="pt-8">
-              <h2 className="text-2xl md:text-3xl font-light mb-6">
+              <h2 className="text-2xl md:text-3xl font-light mb-6 text-black dark:text-white">
                 Let's work together.
               </h2>
               <Button to="/contact" variant="primary" size="lg">

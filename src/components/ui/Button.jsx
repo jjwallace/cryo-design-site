@@ -12,9 +12,9 @@ export default function Button({
   const baseStyles = 'inline-flex items-center justify-center font-medium tracking-wide uppercase transition-all duration-300';
 
   const variants = {
-    primary: 'bg-black text-white hover:bg-gray-800',
-    secondary: 'bg-transparent text-black border border-black hover:bg-black hover:text-white',
-    ghost: 'bg-transparent text-black hover:text-gray-600',
+    primary: 'bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200',
+    secondary: 'bg-transparent text-black dark:text-white border border-black dark:border-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black',
+    ghost: 'bg-transparent text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400',
   };
 
   const sizes = {

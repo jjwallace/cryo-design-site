@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Observer } from 'gsap/Observer';
 
+import { ThemeProvider } from './context/ThemeContext';
 import Layout from './components/layout/Layout';
 import Home from './pages/Home';
 import PortfolioCategory from './pages/PortfolioCategory';
@@ -23,16 +24,18 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="portfolio/:category" element={<PortfolioCategory />} />
-          <Route path="about" element={<About />} />
-          <Route path="contact" element={<Contact />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="portfolio/:category" element={<PortfolioCategory />} />
+            <Route path="about" element={<About />} />
+            <Route path="contact" element={<Contact />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
