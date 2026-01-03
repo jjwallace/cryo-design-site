@@ -97,23 +97,20 @@ export default function TileGallery({ projects, showOverlay = true }) {
   return (
     <section ref={galleryRef} className="relative z-10 px-4 md:px-6 lg:px-12 py-12">
       <div className="max-w-[1800px] mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 auto-rows-[200px] md:auto-rows-[250px] lg:auto-rows-[300px]">
+        <div className="columns-2 md:columns-3 lg:columns-4 gap-3 md:gap-4">
           {displayProjects.map((project, index) => (
             <Link
               key={`${project.category}-${project.id}-${index}`}
               ref={(el) => (tilesRef.current[index] = el)}
               to={`/portfolio/${project.category}`}
-              className={`group relative overflow-hidden ${getGridClasses(
-                project.size,
-                index
-              )}`}
+              className="group relative block mb-3 md:mb-4 break-inside-avoid"
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={() => handleMouseLeave(index)}
             >
               <img
                 src={project.src}
                 alt={project.title}
-                className="w-full h-full object-cover"
+                className="w-full h-auto"
                 loading="lazy"
               />
 

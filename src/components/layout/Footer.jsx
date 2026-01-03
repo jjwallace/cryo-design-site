@@ -17,28 +17,28 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h4 className="text-sm font-medium uppercase tracking-wider mb-4 text-gray-500">
+            <h4 className="text-sm font-medium uppercase tracking-wider mb-6 text-gray-500">
               Portfolio
             </h4>
             <nav className="flex flex-col gap-2">
-              <Link to="/portfolio/logos" className="text-gray-300 hover:text-white transition-colors text-sm">
-                Logos
-              </Link>
-              <Link to="/portfolio/packaging" className="text-gray-300 hover:text-white transition-colors text-sm">
-                Packaging
-              </Link>
-              <Link to="/portfolio/illustration" className="text-gray-300 hover:text-white transition-colors text-sm">
-                Illustration
+              <Link to="/portfolio/brand-identity" className="text-gray-300 hover:text-white transition-colors text-sm">
+                Brand Identity
               </Link>
               <Link to="/portfolio/corporate" className="text-gray-300 hover:text-white transition-colors text-sm">
                 Corporate
+              </Link>
+              <Link to="/portfolio/graphics" className="text-gray-300 hover:text-white transition-colors text-sm">
+                Graphics
+              </Link>
+              <Link to="/portfolio/illustration" className="text-gray-300 hover:text-white transition-colors text-sm">
+                Illustration
               </Link>
             </nav>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="text-sm font-medium uppercase tracking-wider mb-4 text-gray-500">
+            <h4 className="text-sm font-medium uppercase tracking-wider mb-6 text-gray-500">
               Contact
             </h4>
             <div className="flex flex-col gap-2 text-sm">

@@ -85,11 +85,11 @@ export default function Contact() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen flex items-center justify-center px-6 bg-white dark:bg-gray-950">
+      <div className="min-h-screen flex items-center justify-center px-6">
         <div ref={formRef} className="text-center max-w-lg">
-          <div className="w-16 h-16 bg-black dark:bg-white rounded-full flex items-center justify-center mx-auto mb-8">
+          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-8">
             <svg
-              className="w-8 h-8 text-white dark:text-black"
+              className="w-8 h-8 text-black"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -102,8 +102,8 @@ export default function Contact() {
               />
             </svg>
           </div>
-          <h2 className="text-3xl font-light mb-4 text-black dark:text-white">Message Sent</h2>
-          <p className="text-gray-500 dark:text-gray-400 mb-8 whitespace-pre-line">
+          <h2 className="text-3xl font-light mb-4 text-white">Message Sent</h2>
+          <p className="text-gray-400 mb-8 whitespace-pre-line">
             {content.contact.success}
           </p>
           <Button to="/" variant="secondary">
@@ -115,14 +115,14 @@ export default function Contact() {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950">
+    <div className="min-h-screen">
       {/* Hero */}
       <header ref={heroRef} className="pt-20 pb-12 px-6 lg:px-12">
         <div className="max-w-[1800px] mx-auto">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-black dark:text-white mb-8">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-white mb-8">
             Get a Quote
           </h1>
-          <p className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl whitespace-pre-line">
+          <p className="text-lg text-gray-400 max-w-2xl whitespace-pre-line">
             {content.contact.intro}
           </p>
         </div>
@@ -226,12 +226,12 @@ export default function Contact() {
             <div className="sticky top-32 space-y-12">
               {/* Email */}
               <div>
-                <h3 className="text-xs uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-3">
+                <h3 className="text-xs uppercase tracking-widest text-gray-500 mb-3">
                   Email
                 </h3>
                 <a
                   href="mailto:cy@cryodesign.com"
-                  className="text-xl text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400 transition-colors"
+                  className="text-xl text-white hover:text-gray-400 transition-colors"
                 >
                   cy@cryodesign.com
                 </a>
@@ -239,35 +239,35 @@ export default function Contact() {
 
               {/* Location */}
               <div>
-                <h3 className="text-xs uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-3">
+                <h3 className="text-xs uppercase tracking-widest text-gray-500 mb-3">
                   Location
                 </h3>
-                <p className="text-xl text-black dark:text-white">
+                <p className="text-xl text-white">
                   Los Angeles, CA
                 </p>
               </div>
 
               {/* Social */}
               <div>
-                <h3 className="text-xs uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-3">
+                <h3 className="text-xs uppercase tracking-widest text-gray-500 mb-3">
                   Follow
                 </h3>
                 <div className="flex gap-6">
                   <a
                     href="#"
-                    className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+                    className="text-white hover:text-gray-400 transition-colors"
                   >
                     Instagram
                   </a>
                   <a
                     href="#"
-                    className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+                    className="text-white hover:text-gray-400 transition-colors"
                   >
                     Dribbble
                   </a>
                   <a
                     href="#"
-                    className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+                    className="text-white hover:text-gray-400 transition-colors"
                   >
                     LinkedIn
                   </a>

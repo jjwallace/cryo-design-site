@@ -75,11 +75,12 @@ export default function Hero() {
       {/* Fixed Background Image - doesn't scroll with content */}
       <div
         ref={backgroundRef}
-        className="fixed inset-0 z-0"
+        className="fixed inset-0 z-0 bg-black"
         style={{
           backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: 'cover',
+          backgroundSize: 'contain',
           backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
           backgroundAttachment: 'fixed',
           filter: 'blur(2px) grayscale(0%)',
         }}

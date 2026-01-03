@@ -14,7 +14,7 @@ export default function PortfolioCategory() {
   // Validate category
   const validCategory = categories.find((c) => c.slug === category);
   if (!validCategory) {
-    return <Navigate to="/portfolio/logos" replace />;
+    return <Navigate to="/portfolio/brand-identity" replace />;
   }
 
   const projects = getProjectsByCategory(category);
@@ -42,17 +42,17 @@ export default function PortfolioCategory() {
   return (
     <div className="min-h-screen">
       {/* Category Header */}
-      <header ref={headerRef} className="pt-20 pb-12 px-6 lg:px-12 bg-white dark:bg-gray-950">
+      <header ref={headerRef} className="pt-20 pb-12 px-6 lg:px-12">
         <div className="max-w-[1800px] mx-auto">
           <h1
             ref={titleRef}
-            className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-black dark:text-white"
+            className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-white"
           >
             {validCategory.name}
           </h1>
           <p
             ref={countRef}
-            className="text-gray-400 dark:text-gray-500 text-sm uppercase tracking-widest mt-4"
+            className="text-gray-400 text-sm uppercase tracking-widest mt-4"
           >
             {projects.length} Projects
           </p>
@@ -63,7 +63,7 @@ export default function PortfolioCategory() {
       <TileGallery projects={projects} showOverlay={true} />
 
       {/* Bottom spacing */}
-      <div className="h-24 bg-white dark:bg-gray-950" />
+      <div className="h-24" />
     </div>
   );
 }
