@@ -42,17 +42,17 @@ export default function PortfolioCategory() {
   return (
     <div className="min-h-screen">
       {/* Category Header */}
-      <header ref={headerRef} className="pt-20 pb-12 px-6 lg:px-12">
+      <header ref={headerRef} className="pt-20 pb-8 sm:pb-10 md:pb-12 px-4 sm:px-6 md:px-8 lg:px-12">
         <div className="max-w-[1800px] mx-auto">
           <h1
             ref={titleRef}
-            className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-white"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-white"
           >
             {validCategory.name}
           </h1>
           <p
             ref={countRef}
-            className="text-gray-400 text-sm uppercase tracking-widest mt-4"
+            className="text-gray-400 text-xs sm:text-sm uppercase tracking-widest mt-3 sm:mt-4"
           >
             {projects.length} Projects
           </p>

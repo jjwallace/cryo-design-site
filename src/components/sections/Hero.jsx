@@ -70,7 +70,7 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20"
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-16 sm:py-20"
     >
       {/* Fixed Background Image - doesn't scroll with content */}
       <div
@@ -78,7 +78,7 @@ export default function Hero() {
         className="fixed inset-0 z-0 bg-black"
         style={{
           backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: 'contain',
+          backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           backgroundAttachment: 'fixed',
@@ -87,24 +87,24 @@ export default function Hero() {
       />
 
       {/* Dark overlay for text readability */}
-      <div className="fixed inset-0 z-1 bg-black/40" />
+      <div className="fixed inset-0 z-1 bg-black/50 sm:bg-black/40" />
 
       {/* Content */}
       <div className="relative z-10 text-center max-w-3xl mx-auto">
         {/* Animated Logo */}
-        <div className="mb-12">
+        <div className="mb-8 sm:mb-10 md:mb-12">
           <img
             ref={logoRef}
             src={logo}
             alt="Cryo Design"
-            className="w-32 h-32 md:w-48 md:h-48 mx-auto object-contain invert"
+            className="w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 mx-auto object-contain invert"
           />
         </div>
 
         {/* Tagline */}
         <h1
           ref={taglineRef}
-          className="text-3xl md:text-5xl lg:text-6xl font-light tracking-tight text-white mb-6"
+          className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-light tracking-tight text-white mb-4 sm:mb-6"
         >
           {content.hero.tagline}
         </h1>
@@ -112,14 +112,14 @@ export default function Hero() {
         {/* Subtitle */}
         <p
           ref={subtitleRef}
-          className="text-lg md:text-xl text-gray-200 font-light"
+          className="text-base sm:text-lg md:text-xl text-gray-200 font-light"
         >
           {content.hero.subtitle}
         </p>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce z-10">
+      <div className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 animate-bounce z-10">
         <svg
           className="w-6 h-6 text-white/70"
           fill="none"

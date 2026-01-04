@@ -16,9 +16,9 @@ export default function About() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <header ref={heroRef} className="pt-20 pb-8 px-6 lg:px-12">
+      <header ref={heroRef} className="pt-20 pb-6 sm:pb-8 px-4 sm:px-6 md:px-8 lg:px-12">
         <div className="max-w-[1800px] mx-auto">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-white">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-white">
             About
           </h1>
         </div>

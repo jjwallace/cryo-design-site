@@ -95,15 +95,15 @@ export default function TileGallery({ projects, showOverlay = true }) {
   };
 
   return (
-    <section ref={galleryRef} className="relative z-10 px-4 md:px-6 lg:px-12 py-12">
+    <section ref={galleryRef} className="relative z-10 px-3 sm:px-4 md:px-6 lg:px-12 py-8 sm:py-10 md:py-12">
       <div className="max-w-[1800px] mx-auto">
-        <div className="columns-2 md:columns-3 lg:columns-4 gap-3 md:gap-4">
+        <div className="columns-2 md:columns-3 lg:columns-4 gap-2 sm:gap-3 md:gap-4">
           {displayProjects.map((project, index) => (
             <Link
               key={`${project.category}-${project.id}-${index}`}
               ref={(el) => (tilesRef.current[index] = el)}
               to={`/portfolio/${project.category}`}
-              className="group relative block mb-3 md:mb-4 break-inside-avoid"
+              className="group relative block mb-2 sm:mb-3 md:mb-4 break-inside-avoid"
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={() => handleMouseLeave(index)}
             >
@@ -115,12 +115,12 @@ export default function TileGallery({ projects, showOverlay = true }) {
               />
 
               {showOverlay && (
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-end p-4 md:p-6">
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-end p-2 sm:p-4 md:p-6">
                   <div className="translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                    <h3 className="text-white font-medium text-sm md:text-base">
+                    <h3 className="text-white font-medium text-xs sm:text-sm md:text-base">
                       {project.title}
                     </h3>
-                    <p className="text-gray-300 text-xs md:text-sm mt-1">
+                    <p className="text-gray-300 text-xs mt-0.5 sm:mt-1 hidden sm:block">
                       {project.client}
                     </p>
                   </div>

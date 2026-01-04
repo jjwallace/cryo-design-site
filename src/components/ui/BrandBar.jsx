@@ -44,11 +44,11 @@ export default function BrandBar() {
   return (
     <div
       ref={containerRef}
-      className="relative z-10 w-full overflow-hidden py-12"
+      className="relative z-10 w-full overflow-hidden py-8 sm:py-10 md:py-12"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="max-w-[1800px] mx-auto px-6 lg:px-12 mb-8">
+      <div className="max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 mb-6 md:mb-8">
         <p className="text-xs uppercase tracking-widest text-gray-500">
           Featured Work
         </p>
@@ -56,7 +56,7 @@ export default function BrandBar() {
       <div className="relative">
         <div
           ref={trackRef}
-          className="flex gap-16 items-center"
+          className="flex gap-8 sm:gap-12 md:gap-16 items-center"
           style={{ width: 'fit-content' }}
         >
           {duplicatedBrands.map((brand, index) => (
@@ -67,7 +67,7 @@ export default function BrandBar() {
               <img
                 src={brand.logo}
                 alt={brand.name}
-                className="h-8 w-auto object-contain"
+                className="h-6 sm:h-7 md:h-8 w-auto object-contain"
               />
             </div>
           ))}

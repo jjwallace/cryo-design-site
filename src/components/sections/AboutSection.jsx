@@ -42,21 +42,21 @@ export default function AboutSection({ showTitle = false }) {
   return (
     <section ref={sectionRef} className="relative z-10 py-16 md:py-24">
       {showTitle && (
-        <header className="px-6 lg:px-12 pb-16">
+        <header className="px-4 sm:px-6 md:px-8 lg:px-12 pb-12 md:pb-16">
           <div className="max-w-[1800px] mx-auto">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-white">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-white">
               About
             </h1>
           </div>
         </header>
       )}
 
-      <div className="max-w-[1800px] mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+      <div className="max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-24">
           {/* Left Column - Image */}
-          <div className="lg:col-span-5">
-            <div className="sticky top-32">
-              <div className="aspect-[4/5] overflow-hidden">
+          <div className="md:col-span-1 lg:col-span-5">
+            <div className="md:sticky md:top-32">
+              <div className="aspect-[4/5] overflow-hidden max-w-md mx-auto md:max-w-none">
                 <img
                   src={mugshotImage}
                   alt="CRYO Designs Studio"
@@ -67,7 +67,7 @@ export default function AboutSection({ showTitle = false }) {
           </div>
 
           {/* Right Column - Content */}
-          <div className="lg:col-span-7 space-y-20">
+          <div className="md:col-span-1 lg:col-span-7 space-y-12 md:space-y-16 lg:space-y-20">
             {/* Bio Section */}
             <div ref={bioRef}>
               <h2 className="text-xs uppercase tracking-widest text-gray-500 mb-6">

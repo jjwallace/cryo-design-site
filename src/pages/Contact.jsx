@@ -117,20 +117,20 @@ export default function Contact() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <header ref={heroRef} className="pt-20 pb-12 px-6 lg:px-12">
+      <header ref={heroRef} className="pt-20 pb-8 sm:pb-10 md:pb-12 px-4 sm:px-6 md:px-8 lg:px-12">
         <div className="max-w-[1800px] mx-auto">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-white mb-8">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-white mb-6 md:mb-8">
             Get a Quote
           </h1>
-          <p className="text-lg text-gray-400 max-w-2xl whitespace-pre-line">
+          <p className="text-base sm:text-lg text-gray-400 max-w-2xl whitespace-pre-line">
             {content.contact.intro}
           </p>
         </div>
       </header>
 
       {/* Form */}
-      <div ref={formRef} className="max-w-[1800px] mx-auto px-6 lg:px-12 pb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <div ref={formRef} className="max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 pb-16 md:pb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 lg:gap-16">
           {/* Form Column */}
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Name & Email Row */}
