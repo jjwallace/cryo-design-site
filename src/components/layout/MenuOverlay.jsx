@@ -55,8 +55,8 @@ export default function MenuOverlay({ isOpen, onClose, links }) {
             to={link.to}
             onClick={onClose}
             className={({ isActive }) =>
-              `text-3xl font-light tracking-widest uppercase transition-colors duration-200 ${
-                isActive ? 'text-white' : 'text-gray-400 hover:text-white'
+              `text-3xl font-light tracking-widest uppercase transition-opacity duration-200 text-white ${
+                isActive ? 'opacity-100' : 'opacity-70 hover:opacity-100'
               }`
             }
           >

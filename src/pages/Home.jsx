@@ -40,7 +40,7 @@ export default function Home() {
             <Button to="/contact" variant="primary" size="lg">
               Get in Touch
             </Button>
-            <Button to="/portfolio/brand-identity" variant="secondary" size="lg">
+            <Button to="/portfolio/branding" variant="secondary" size="lg">
               View All Work
             </Button>
           </div>

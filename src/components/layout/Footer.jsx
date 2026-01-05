@@ -21,17 +21,17 @@ export default function Footer() {
               Portfolio
             </h4>
             <nav className="flex flex-col gap-2">
-              <Link to="/portfolio/brand-identity" className="text-gray-300 hover:text-white transition-colors text-sm">
-                Brand Identity
+              <Link to="/portfolio/branding" className="text-gray-300 hover:text-white transition-colors text-sm">
+                Branding
               </Link>
-              <Link to="/portfolio/corporate" className="text-gray-300 hover:text-white transition-colors text-sm">
-                Corporate
+              <Link to="/portfolio/identity" className="text-gray-300 hover:text-white transition-colors text-sm">
+                Identity
+              </Link>
+              <Link to="/portfolio/spatial" className="text-gray-300 hover:text-white transition-colors text-sm">
+                Spatial
               </Link>
               <Link to="/portfolio/graphics" className="text-gray-300 hover:text-white transition-colors text-sm">
                 Graphics
-              </Link>
-              <Link to="/portfolio/illustration" className="text-gray-300 hover:text-white transition-colors text-sm">
-                Illustration
               </Link>
             </nav>
           </div>

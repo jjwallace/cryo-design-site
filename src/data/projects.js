@@ -32,31 +32,32 @@ const createProjectsFromGlob = (globResult, category) => {
 };
 
 // Create project arrays for each category
-export const brandIdentityProjects = createProjectsFromGlob(brandIdentityImages, 'brand-identity');
-export const corporateProjects = createProjectsFromGlob(corporateImages, 'corporate');
+// Mapping: Illustration folder → Branding, Brand Identity folder → Identity, Corporate folder → Spatial
+export const brandingProjects = createProjectsFromGlob(illustrationImages, 'branding');
+export const identityProjects = createProjectsFromGlob(brandIdentityImages, 'identity');
+export const spatialProjects = createProjectsFromGlob(corporateImages, 'spatial');
 export const graphicsProjects = createProjectsFromGlob(graphicsImages, 'graphics');
-export const illustrationProjects = createProjectsFromGlob(illustrationImages, 'illustration');
-export const topProjects = createProjectsFromGlob(topImages, 'brand-identity');
+export const topProjects = createProjectsFromGlob(topImages, 'identity');
 
 // All projects combined
 export const allProjects = [
-  ...brandIdentityProjects,
-  ...corporateProjects,
+  ...brandingProjects,
+  ...identityProjects,
+  ...spatialProjects,
   ...graphicsProjects,
-  ...illustrationProjects,
 ];
 
 // Get projects by category
 export const getProjectsByCategory = (category) => {
   switch (category) {
-    case 'brand-identity':
-      return brandIdentityProjects;
-    case 'corporate':
-      return corporateProjects;
+    case 'branding':
+      return brandingProjects;
+    case 'identity':
+      return identityProjects;
+    case 'spatial':
+      return spatialProjects;
     case 'graphics':
       return graphicsProjects;
-    case 'illustration':
-      return illustrationProjects;
     default:
       return allProjects;
   }
@@ -64,18 +65,74 @@ export const getProjectsByCategory = (category) => {
 
 // Category metadata
 export const categories = [
-  { slug: 'brand-identity', name: 'Brand Identity', count: brandIdentityProjects.length },
-  { slug: 'corporate', name: 'Corporate', count: corporateProjects.length },
+  { slug: 'branding', name: 'Branding', count: brandingProjects.length },
+  { slug: 'identity', name: 'Identity', count: identityProjects.length },
+  { slug: 'spatial', name: 'Spatial', count: spatialProjects.length },
   { slug: 'graphics', name: 'Graphics', count: graphicsProjects.length },
-  { slug: 'illustration', name: 'Illustration', count: illustrationProjects.length },
 ];
 
 // Mixed gallery for home page
 export const getHomeGallery = () => {
   return [
-    ...brandIdentityProjects.slice(0, 12),
-    ...corporateProjects.slice(0, 8),
+    ...brandingProjects.slice(0, 12),
+    ...identityProjects.slice(0, 12),
+    ...spatialProjects.slice(0, 8),
     ...graphicsProjects.slice(0, 12),
-    ...illustrationProjects.slice(0, 12),
   ];
+};
+
+// Group images by project name (CRYO_PROJECTNAME_###)
+// Returns array of { name, images: [] } objects
+const groupByProject = (globResult) => {
+  const projectMap = new Map();
+
+  Object.entries(globResult).forEach(([path, src]) => {
+    const filename = path.split('/').pop().replace(/\.[^.]+$/, '');
+    // Extract project name: CRYO_ProjectName_### -> ProjectName
+    const parts = filename.split('_');
+    // Remove CRYO prefix and number suffix to get project name
+    const projectName = parts.slice(1, -1).join('_');
+    const imageNum = parts[parts.length - 1];
+
+    if (!projectMap.has(projectName)) {
+      projectMap.set(projectName, {
+        name: projectName.replace(/_/g, ' '),
+        description: '',
+        images: [],
+      });
+    }
+
+    projectMap.get(projectName).images.push({
+      src,
+      filename,
+      number: imageNum,
+    });
+  });
+
+  // Sort images within each project by number
+  projectMap.forEach((project) => {
+    project.images.sort((a, b) => {
+      const numA = parseInt(a.number, 10) || 0;
+      const numB = parseInt(b.number, 10) || 0;
+      return numA - numB;
+    });
+  });
+
+  return Array.from(projectMap.values());
+};
+
+// Get grouped projects by category for project-based layout
+export const getGroupedProjectsByCategory = (category) => {
+  switch (category) {
+    case 'branding':
+      return groupByProject(illustrationImages);
+    case 'identity':
+      return groupByProject(brandIdentityImages);
+    case 'spatial':
+      return groupByProject(corporateImages);
+    case 'graphics':
+      return groupByProject(graphicsImages);
+    default:
+      return [];
+  }
 };

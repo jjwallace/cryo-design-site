@@ -14,7 +14,7 @@ export default function PortfolioCategory() {
   // Validate category
   const validCategory = categories.find((c) => c.slug === category);
   if (!validCategory) {
-    return <Navigate to="/portfolio/brand-identity" replace />;
+    return <Navigate to="/portfolio/branding" replace />;
   }
 
   const projects = getProjectsByCategory(category);

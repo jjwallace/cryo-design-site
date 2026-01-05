@@ -5,10 +5,10 @@ import logo from '../../assets/logo/logo_cryo_1.png';
 import MenuOverlay from './MenuOverlay';
 
 const navLinks = [
-  { to: '/portfolio/brand-identity', label: 'Brand Identity' },
-  { to: '/portfolio/corporate', label: 'Corporate' },
+  { to: '/portfolio/branding', label: 'Branding' },
+  { to: '/portfolio/identity', label: 'Identity' },
+  { to: '/portfolio/spatial', label: 'Spatial' },
   { to: '/portfolio/graphics', label: 'Graphics' },
-  { to: '/portfolio/illustration', label: 'Illustration' },
   { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
 ];
