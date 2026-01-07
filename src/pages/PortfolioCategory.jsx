@@ -2,8 +2,8 @@ import { useParams, Navigate } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { getProjectsByCategory, categories } from '../data/projects';
-import TileGallery from '../components/sections/TileGallery';
+import { getGroupedProjectsByCategory, categories } from '../data/projects';
+import ProjectCarousel from '../components/sections/ProjectCarousel';
 
 export default function PortfolioCategory() {
   const { category } = useParams();
@@ -17,7 +17,7 @@ export default function PortfolioCategory() {
     return <Navigate to="/portfolio/branding" replace />;
   }
 
-  const projects = getProjectsByCategory(category);
+  const groupedProjects = getGroupedProjectsByCategory(category);
 
   useEffect(() => {
     // Animate header on mount
@@ -54,13 +54,23 @@ export default function PortfolioCategory() {
             ref={countRef}
             className="text-gray-400 text-xs sm:text-sm uppercase tracking-widest mt-3 sm:mt-4"
           >
-            {projects.length} Projects
+            {groupedProjects.length} Projects
           </p>
         </div>
       </header>
 
-      {/* Project Grid */}
-      <TileGallery projects={projects} showOverlay={true} />
+      {/* Project Carousels */}
+      <section className="px-4 sm:px-6 md:px-8 lg:px-12">
+        <div className="max-w-[1800px] mx-auto">
+          {groupedProjects.map((project, index) => (
+            <ProjectCarousel
+              key={`${project.name}-${index}`}
+              project={project}
+              images={project.images}
+            />
+          ))}
+        </div>
+      </section>
 
       {/* Bottom spacing */}
       <div className="h-24" />
