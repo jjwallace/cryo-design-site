@@ -121,18 +121,48 @@ const groupByProject = (globResult) => {
   return Array.from(projectMap.values());
 };
 
+// Custom sort order for spatial category
+const spatialOrder = ['SentinelOne Booth', 'Aston Martin', 'SentinelOne'];
+
+// Sort projects: reverse alphabetical (Z-A), with custom order for spatial
+const sortProjects = (projects, category) => {
+  if (category === 'spatial') {
+    // Custom order for spatial
+    return projects.sort((a, b) => {
+      const aIndex = spatialOrder.findIndex(name => a.name.includes(name.replace(' ', '_')) || a.name.includes(name.replace('_', ' ')) || a.name === name);
+      const bIndex = spatialOrder.findIndex(name => b.name.includes(name.replace(' ', '_')) || b.name.includes(name.replace('_', ' ')) || b.name === name);
+
+      // If both are in custom order, sort by that order
+      if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex;
+      // If only one is in custom order, put it first
+      if (aIndex !== -1) return -1;
+      if (bIndex !== -1) return 1;
+      // Otherwise reverse alphabetical
+      return b.name.localeCompare(a.name);
+    });
+  }
+  // Default: reverse alphabetical (Z-A)
+  return projects.sort((a, b) => b.name.localeCompare(a.name));
+};
+
 // Get grouped projects by category for project-based layout
 export const getGroupedProjectsByCategory = (category) => {
+  let projects;
   switch (category) {
     case 'branding':
-      return groupByProject(illustrationImages);
+      projects = groupByProject(illustrationImages);
+      break;
     case 'identity':
-      return groupByProject(brandIdentityImages);
+      projects = groupByProject(brandIdentityImages);
+      break;
     case 'spatial':
-      return groupByProject(corporateImages);
+      projects = groupByProject(corporateImages);
+      break;
     case 'graphics':
-      return groupByProject(graphicsImages);
+      projects = groupByProject(graphicsImages);
+      break;
     default:
       return [];
   }
+  return sortProjects(projects, category);
 };

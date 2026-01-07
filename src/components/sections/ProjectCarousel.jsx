@@ -103,7 +103,7 @@ export default function ProjectCarousel({ project, images }) {
       </div>
 
       {/* Project/Client Title - Centered below carousel */}
-      <div className="pt-4 sm:pt-5 md:pt-6">
+      <div className="pt-4 sm:pt-5 md:pt-6 px-4 sm:px-6 md:px-8 lg:px-12">
         <h3 className="text-xs sm:text-sm font-light text-gray-400 text-center tracking-widest uppercase">
           {project.name}
         </h3>

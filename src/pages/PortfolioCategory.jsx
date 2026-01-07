@@ -59,9 +59,9 @@ export default function PortfolioCategory() {
         </div>
       </header>
 
-      {/* Project Carousels */}
-      <section className="px-4 sm:px-6 md:px-8 lg:px-12">
-        <div className="max-w-[1800px] mx-auto">
+      {/* Project Carousels - Full bleed for mobile swipe */}
+      <section>
+        <div>
           {groupedProjects.map((project, index) => (
             <ProjectCarousel
               key={`${project.name}-${index}`}

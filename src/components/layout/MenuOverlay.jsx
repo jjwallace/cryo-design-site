@@ -18,17 +18,17 @@ export default function MenuOverlay({ isOpen, onClose, links }) {
         ease: 'power3.inOut',
       });
 
-      // Stagger links
+      // Stagger links with scale animation
       gsap.fromTo(
         linkElements,
-        { y: 50, opacity: 0 },
+        { scale: 0.85, opacity: 0 },
         {
-          y: 0,
+          scale: 1,
           opacity: 1,
           duration: 0.5,
-          stagger: 0.08,
+          stagger: 0.06,
           delay: 0.3,
-          ease: 'power2.out',
+          ease: 'power2.inOut',
         }
       );
     } else {
@@ -54,11 +54,8 @@ export default function MenuOverlay({ isOpen, onClose, links }) {
             ref={(el) => (linksRef.current[index] = el)}
             to={link.to}
             onClick={onClose}
-            className={({ isActive }) =>
-              `text-3xl font-light tracking-widest uppercase transition-opacity duration-200 text-white ${
-                isActive ? 'opacity-100' : 'opacity-70 hover:opacity-100'
-              }`
-            }
+            className="text-3xl font-light tracking-widest uppercase !text-white"
+            style={{ color: '#ffffff' }}
           >
             {link.label}
           </NavLink>
