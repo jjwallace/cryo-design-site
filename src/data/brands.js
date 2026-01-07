@@ -42,7 +42,7 @@ export const content = {
   contact: {
     intro: `Ready to start a project? Have a question? Just want to say hello?
 
-Fill out the form below and we'll get back to you within 48 hours. For urgent inquiries, reach out directly at cy@cryodesign.com.`,
+Fill out the form below and we'll get back to you within 48 hours. For urgent inquiries, reach out directly at cy@cryodesigns.com.`,
     success: `Thank you for reaching out. We've received your message and will be in touch soon. In the meantime, feel free to explore our work.`,
   },
   footer: {

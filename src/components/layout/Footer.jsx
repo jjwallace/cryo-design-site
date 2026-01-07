@@ -42,8 +42,8 @@ export default function Footer() {
               Contact
             </h4>
             <div className="flex flex-col gap-2 text-sm">
-              <a href="mailto:cy@cryodesign.com" className="text-gray-300 hover:text-white transition-colors">
-                cy@cryodesign.com
+              <a href="mailto:cy@cryodesigns.com" className="text-gray-300 hover:text-white transition-colors">
+                cy@cryodesigns.com
               </a>
               <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">
                 Get a Quote

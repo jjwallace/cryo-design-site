@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import emailjs from '@emailjs/browser';
 import { content } from '../data/brands';
 import FormField from '../components/ui/FormField';
 import Button from '../components/ui/Button';
@@ -69,18 +70,36 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          name: formData.name,
+          email: formData.email,
+          company: formData.company || 'Not provided',
+          projectType: projectTypes.find(p => p.value === formData.projectType)?.label || formData.projectType,
+          budget: budgetRanges.find(b => b.value === formData.budget)?.label || 'Not provided',
+          timeline: timelines.find(t => t.value === formData.timeline)?.label || 'Not provided',
+          message: formData.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
 
-    setIsSubmitting(false);
-    setSubmitted(true);
+      setSubmitted(true);
 
-    // Animate success state
-    gsap.fromTo(
-      formRef.current,
-      { scale: 0.95, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 0.5, ease: 'power2.out' }
-    );
+      // Animate success state
+      gsap.fromTo(
+        formRef.current,
+        { scale: 0.95, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.5, ease: 'power2.out' }
+      );
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      alert('Failed to send message. Please try again or email us directly at cy@cryodesigns.com');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -230,10 +249,10 @@ export default function Contact() {
                   Email
                 </h3>
                 <a
-                  href="mailto:cy@cryodesign.com"
+                  href="mailto:cy@cryodesigns.com"
                   className="text-xl text-white hover:text-gray-400 transition-colors"
                 >
-                  cy@cryodesign.com
+                  cy@cryodesigns.com
                 </a>
               </div>
 
