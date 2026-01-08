@@ -8,6 +8,52 @@ const graphicsImages = import.meta.glob('../assets/portfolio/Graphics/*.{png,jpg
 const illustrationImages = import.meta.glob('../assets/portfolio/Illustrative Branding/*.{png,jpg,jpeg,PNG,JPG,JPEG}', { eager: true, import: 'default' });
 const topImages = import.meta.glob('../assets/portfolio/top-images/*.{png,jpg,jpeg,PNG,JPG,JPEG}', { eager: true, import: 'default' });
 
+// Custom order for top images (home page gallery)
+const topImageOrder = [
+  'CRYO_Ritual_Rosin_022',
+  'CRYO_Ritual_Rosin_023',
+  'CRYO_Aston_Martin_003',
+  'CRYO_Aston_Martin_004',
+  'CRYO_SentinelOne_Booth_004',
+  'CRYO_SentinelOne_Booth_001',
+  'CRYO_Pokneon_011',
+  'CRYO_Ritual_Rosin_016',
+  'CRYO_Altered_Ego_001',
+];
+
+// Helper to create ordered projects from top images
+const createOrderedTopProjects = (globResult, order) => {
+  const sizes = ['med-square', 'lg-landscape', 'med-portrait', 'lg-square', 'sm-square', 'med-landscape', 'lg-portrait', 'xl-landscape'];
+
+  // Create a map of filename -> src for quick lookup
+  const imageMap = {};
+  Object.entries(globResult).forEach(([path, src]) => {
+    const filename = path.split('/').pop().replace(/\.[^.]+$/, '');
+    imageMap[filename] = src;
+  });
+
+  // Build array in specified order
+  return order.map((filename, index) => {
+    const src = imageMap[filename];
+    if (!src) return null;
+
+    const parts = filename.split('_');
+    let client = parts.slice(1, -1).join(' ');
+    // Rename "Ritual Rosin" to "Ritual"
+    if (client === 'Ritual Rosin') client = 'Ritual';
+
+    return {
+      id: index + 1,
+      title: client || `Project ${index + 1}`,
+      client: client || 'CRYO Designs',
+      year: 2024,
+      src,
+      size: sizes[index % sizes.length],
+      category: 'top',
+    };
+  }).filter(Boolean);
+};
+
 // Helper to convert glob imports to project array
 const createProjectsFromGlob = (globResult, category) => {
   return Object.entries(globResult).map(([path, src], index) => {
@@ -37,7 +83,7 @@ export const brandingProjects = createProjectsFromGlob(illustrationImages, 'bran
 export const identityProjects = createProjectsFromGlob(brandIdentityImages, 'identity');
 export const spatialProjects = createProjectsFromGlob(corporateImages, 'spatial');
 export const graphicsProjects = createProjectsFromGlob(graphicsImages, 'graphics');
-export const topProjects = createProjectsFromGlob(topImages, 'identity');
+export const topProjects = createOrderedTopProjects(topImages, topImageOrder);
 
 // All projects combined
 export const allProjects = [
