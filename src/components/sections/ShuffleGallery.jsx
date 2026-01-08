@@ -1,11 +1,39 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
+import ImageLightbox from '../ui/ImageLightbox';
 
-export default function ShuffleGallery({ projects, showOverlay = true }) {
+export default function ShuffleGallery({ projects }) {
   const galleryRef = useRef(null);
   const containerRef = useRef(null);
   const tilesRef = useRef([]);
+
+  // Lightbox state (desktop only)
+  const [lightboxImage, setLightboxImage] = useState(null);
+  const [lightboxOrigin, setLightboxOrigin] = useState(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 1024);
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
+
+  const handleImageClick = (e, project) => {
+    if (!isDesktop) return; // Let Link handle navigation on mobile
+
+    e.preventDefault(); // Prevent Link navigation on desktop
+    const img = e.currentTarget.querySelector('img');
+    const rect = img.getBoundingClientRect();
+    setLightboxOrigin(rect);
+    setLightboxImage({ src: project.src, alt: project.title });
+  };
+
+  const closeLightbox = () => {
+    setLightboxImage(null);
+    setLightboxOrigin(null);
+  };
 
   // Handle hover animations
   const handleMouseEnter = (index) => {
@@ -42,7 +70,8 @@ export default function ShuffleGallery({ projects, showOverlay = true }) {
               key={`${project.category}-${project.id}-${index}`}
               ref={(el) => (tilesRef.current[index] = el)}
               to={`/portfolio/${project.category}`}
-              className="group relative block"
+              className={`group relative block ${isDesktop ? 'cursor-pointer' : ''}`}
+              onClick={(e) => handleImageClick(e, project)}
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={() => handleMouseLeave(index)}
             >
@@ -52,23 +81,19 @@ export default function ShuffleGallery({ projects, showOverlay = true }) {
                 className="w-full h-auto"
                 loading="lazy"
               />
-
-              {showOverlay && (
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-end p-2 sm:p-4 md:p-6">
-                  <div className="translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                    <h3 className="text-white font-medium text-xs sm:text-sm md:text-base">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-300 text-xs mt-0.5 sm:mt-1 hidden sm:block">
-                      {project.client}
-                    </p>
-                  </div>
-                </div>
-              )}
             </Link>
           ))}
         </div>
       </div>
+
+      {/* Lightbox - Desktop only */}
+      {lightboxImage && lightboxOrigin && (
+        <ImageLightbox
+          image={lightboxImage}
+          originRect={lightboxOrigin}
+          onClose={closeLightbox}
+        />
+      )}
     </section>
   );
 }

@@ -1,6 +1,7 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, FreeMode } from 'swiper/modules';
+import ImageLightbox from '../ui/ImageLightbox';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -10,6 +11,41 @@ import 'swiper/css/free-mode';
 export default function ProjectCarousel({ project, images }) {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const mouseStartRef = useRef({ x: 0, y: 0 });
+
+  // Lightbox state (desktop only)
+  const [lightboxImage, setLightboxImage] = useState(null);
+  const [lightboxOrigin, setLightboxOrigin] = useState(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 1024);
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
+
+  const handleMouseDown = (e) => {
+    mouseStartRef.current = { x: e.clientX, y: e.clientY };
+  };
+
+  const handleImageClick = (e, image, index) => {
+    if (!isDesktop) return;
+
+    // Check if this was a drag (moved more than 5px) or a true click
+    const dx = Math.abs(e.clientX - mouseStartRef.current.x);
+    const dy = Math.abs(e.clientY - mouseStartRef.current.y);
+    if (dx > 5 || dy > 5) return; // Was a drag, not a click
+
+    const rect = e.currentTarget.getBoundingClientRect();
+    setLightboxOrigin(rect);
+    setLightboxImage({ src: image.src, alt: `${project.name} - ${index + 1}` });
+  };
+
+  const closeLightbox = () => {
+    setLightboxImage(null);
+    setLightboxOrigin(null);
+  };
 
   return (
     <div className="mb-8 sm:mb-10 md:mb-12">
@@ -49,7 +85,11 @@ export default function ProjectCarousel({ project, images }) {
               key={`${project.name}-${index}`}
               className="!w-auto"
             >
-              <div className="h-48 sm:h-56 md:h-64 lg:h-80 flex items-center">
+              <div
+                className={`h-48 sm:h-56 md:h-64 lg:h-80 flex items-center ${isDesktop ? 'cursor-pointer' : ''}`}
+                onMouseDown={handleMouseDown}
+                onClick={(e) => handleImageClick(e, image, index)}
+              >
                 <img
                   src={image.src}
                   alt={`${project.name} - ${index + 1}`}
@@ -115,6 +155,15 @@ export default function ProjectCarousel({ project, images }) {
           </p>
         )}
       </div>
+
+      {/* Lightbox - Desktop only */}
+      {lightboxImage && lightboxOrigin && (
+        <ImageLightbox
+          image={lightboxImage}
+          originRect={lightboxOrigin}
+          onClose={closeLightbox}
+        />
+      )}
     </div>
   );
 }
